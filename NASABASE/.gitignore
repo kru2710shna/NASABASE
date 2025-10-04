@@ -50,3 +50,10 @@ data/**/*.json
 
 # Streamlit merge conflict artifacts (if any)
 streamlit-ui
+
+
+NASABASE/data/embeddings/*.json
+*.csv
+*.parquet
+*.pkl
+*.bin
