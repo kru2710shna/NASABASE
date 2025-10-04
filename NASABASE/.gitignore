@@ -1,16 +1,36 @@
-# Environment & API keys
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 .env
-
 # Python cache
-__pycache__/
+_pycache_/
 *.pyc
-
-# Data files
-data/embeddings/
-data/processed/
-data/raw/
-
-# VS Code / Colab / Mac junk
-.vscode/
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+.env
+.venv/
+.envrc
 .DS_Store
-.ipynb_checkpoints/
+
+# IDEs
+.vscode/
+.idea/
+
+# Build & logs
+dist/
+build/
+logs/
+*.log
+
+# ChromaDB local vector store
+data/chroma_storage/
+
+# Temporary files
+*.tmp
+*.swp
+*.bak
+>>>>>>> streamlit-ui
