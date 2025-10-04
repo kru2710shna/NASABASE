@@ -1,20 +1,28 @@
-# view_chroma_embeddings.py
+# ===============================================================
+# 📦 ChromaDB Document Counter – NASA Space Biology Knowledge Engine
+# ===============================================================
+
+import os
 import chromadb
 
-# Load persistent client
-client = chromadb.PersistentClient(path="data/chroma_storage")
+# === Configuration ===
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.abspath(os.path.join(BASE_DIR))
+CHROMA_PATH = os.path.join(PROJECT_ROOT, "data", "chroma_storage")
+COLLECTION_NAME = "nasa_bio"
 
-# Get your collection
-collection = client.get_collection("nasa_bio")
+# === Connect to ChromaDB ===
+print(f"🔌 Connecting to ChromaDB at: {CHROMA_PATH}")
+client = chromadb.PersistentClient(path=CHROMA_PATH)
 
-# Fetch first 3 documents
-results = collection.get(
-    include=["embeddings", "metadatas", "documents"],
-    limit=3
-)
+# === Get Collection ===
+try:
+    collection = client.get_collection(name=COLLECTION_NAME)
+except Exception as e:
+    print(f"❌ Error: Could not find collection '{COLLECTION_NAME}'.")
+    print(e)
+    exit(1)
 
-for i, doc in enumerate(results["documents"]):
-    print(f"\n📄 Document {i+1}: {doc}")
-    print(f"🔑 Metadata: {results['metadatas'][i]}")
-    print(f"🧩 Embedding vector length: {len(results['embeddings'][i])}")
-    print(f"🧮 First 5 dims: {results['embeddings'][i][:5]}")
+# === Get Total Count ===
+count = collection.count()
+print(f"\n📦 Total number of files/documents in '{COLLECTION_NAME}': {count}")

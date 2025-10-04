@@ -1,5 +1,0 @@
-chromadb
-openai
-tqdm
-numpy
-python-dotenv
