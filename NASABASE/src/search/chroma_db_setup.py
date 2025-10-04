@@ -1,23 +1,24 @@
 # ===============================================================
 # 🧠 ChromaDB Setup – NASA Space Biology Knowledge Engine
+# Compatible with Chroma >= 0.5
 # ===============================================================
 
 import os
 import json
 import chromadb
-from chromadb.config import Settings
 
-# === Resolve Absolute Paths ===
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
-DATA_PATH = os.path.join(BASE_DIR, "data/embeddings/nasa_space_bio_embeddings.json")
-CHROMA_PATH = os.path.join(BASE_DIR, "data/chroma_storage")
+# === Paths ===
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_PATH = os.path.join(BASE_DIR, "../../data/embeddings/nasa_space_bio_embeddings.json")
+CHROMA_PATH = os.path.join(BASE_DIR, "../../data/chroma_storage")
 
-# === Ensure storage directory exists ===
+# === Ensure directory exists ===
 os.makedirs(CHROMA_PATH, exist_ok=True)
 
-# === Initialize Chroma Client ===
-client = chromadb.Client(Settings(persist_directory=CHROMA_PATH))
-collection = client.get_or_create_collection("nasa_bio")
+# === Initialize Persistent Client (New API) ===
+# The new API uses chromadb.PersistentClient instead of Settings
+client = chromadb.PersistentClient(path=CHROMA_PATH)
+collection = client.get_or_create_collection(name="nasa_bio")
 
 # === Load Embeddings JSON ===
 with open(DATA_PATH, "r") as f:
@@ -25,7 +26,7 @@ with open(DATA_PATH, "r") as f:
 
 print(f"✅ Loaded {len(nasa_data)} documents for ChromaDB setup.")
 
-# === Insert Documents into Collection ===
+# === Add to Database ===
 added = 0
 for i, doc in enumerate(nasa_data):
     try:
@@ -41,11 +42,10 @@ for i, doc in enumerate(nasa_data):
         )
         added += 1
     except Exception as e:
-        print(f"⚠️ Skipped '{doc['title'][:50]}' due to: {e}")
+        print(f"⚠️ Skipped '{doc['title'][:40]}' due to {e}")
 
 print(f"✅ Successfully added {added}/{len(nasa_data)} documents.")
 print(f"📂 Storage location: {CHROMA_PATH}")
 
-# === Verification Step ===
-count = collection.count()
-print(f"🧾 Total documents in ChromaDB: {count}")
+# === Verify ===
+print(f"🧾 Total docs stored: {collection.count()}")
