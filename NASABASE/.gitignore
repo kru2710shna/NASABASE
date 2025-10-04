@@ -1,22 +1,30 @@
+# ===============================================================
+# 🧠 NASA Space Biology Knowledge Engine – .gitignore
+# ===============================================================
+
 # Node.js
 node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Environment files
 .env
+.venv/
+.envrc
+
 # Python cache
-_pycache_/
+__pycache__/
 *.pyc
 *.pyo
 *.pyd
 *.pdb
 *.egg-info/
-.env
-.venv/
-.envrc
+
+# macOS system files
 .DS_Store
 
-# IDEs
+# IDE settings
 .vscode/
 .idea/
 
@@ -29,8 +37,16 @@ logs/
 # ChromaDB local vector store
 data/chroma_storage/
 
-# Temporary files
+# Temporary / backup files
 *.tmp
 *.swp
 *.bak
->>>>>>> streamlit-ui
+
+# Data files (embeddings, results, raw data)
+data/**/*.csv
+data/**/*.json
+*.csv
+*.json
+
+# Streamlit merge conflict artifacts (if any)
+streamlit-ui
