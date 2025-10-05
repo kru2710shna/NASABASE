@@ -10,3 +10,5 @@ openai
 python-dotenv
 openai-whisper
 faster-whisper
+react-globe.gl
+three

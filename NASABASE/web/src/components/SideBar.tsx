@@ -4,10 +4,10 @@ import History from "./History";
 
 interface Props {
   onSelectHistory: (query: string) => void;
-  onNavigate: (view: "home" | "bookmarks") => void; // ✅ Add this to props
+  onNavigate: (view: "home" | "bookmarks" | "voice") => void; 
 }
 
-const SideBar: React.FC<Props> = ({ onSelectHistory, onNavigate }) => { // ✅ Destructure here
+const SideBar: React.FC<Props> = ({ onSelectHistory, onNavigate }) => { 
   const [showHistory, setShowHistory] = useState(false);
 
   return (
@@ -17,7 +17,7 @@ const SideBar: React.FC<Props> = ({ onSelectHistory, onNavigate }) => { // ✅ D
       <ul className="sidebar-list">
         <li onClick={() => onNavigate("home")}>Home</li>
         <li onClick={() => setShowHistory(!showHistory)}>History</li>
-        <li>🎙️ Voice Search</li>
+        <li onClick={() => onNavigate("voice")}>Voice Search</li>
         <li onClick={() => onNavigate("bookmarks")}>Bookmarks</li>
         <li>Settings</li>
         <li>Live Feed</li>

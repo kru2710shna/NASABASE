@@ -7,13 +7,15 @@ import FiltersPanel from "./components/FiltersPanel";
 import SummaryModal from "./components/SummaryModal";
 import Bookmarks from "./components/Bookmarks";
 import BackButton from "./components/BackButton";
+import VoiceSearch from "./components/VoiceSearch"
 
 const App: React.FC = () => {
   const [results, setResults] = useState<any[]>([]);
   const [summary, setSummary] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [bookmarks, setBookmarks] = useState<any[]>([]);
-  const [activeView, setActiveView] = useState<"home" | "bookmarks">("home");
+  const [activeView, setActiveView] = useState<"home" | "bookmarks" | "voice">("home");
+
 
   // Load saved bookmarks on mount
   useEffect(() => {
@@ -36,6 +38,7 @@ const App: React.FC = () => {
       );
       const data = await res.json();
       setResults(data.results || []);
+      setActiveView("home");
     } catch {
       console.error("Search request failed.");
     }
@@ -71,7 +74,7 @@ const App: React.FC = () => {
   };
 
   // === Navigate ===
-  const handleNavigate = (view: "home" | "bookmarks") => {
+  const handleNavigate = (view: "home" | "bookmarks" | "voice") => {
     setActiveView(view);
   };
 
@@ -81,20 +84,23 @@ const App: React.FC = () => {
       <Header />
       <main className="layout">
         <SideBar onSelectHistory={handleSearch} onNavigate={handleNavigate} />
-        {activeView === "home" ? (
+
+        {activeView === "home" && (
           <SearchSection
             results={results}
             onSearch={handleSearch}
             onSummarize={handleSummarize}
             onBookmark={handleBookmark}
           />
-        ) : (
-          <Bookmarks bookmarks={bookmarks} />
         )}
+
+        {activeView === "bookmarks" && <Bookmarks bookmarks={bookmarks} />}
+        {activeView === "voice" && <VoiceSearch onSearch={handleSearch} />}
+
         <FiltersPanel />
       </main>
 
-      {activeView === "bookmarks" && (
+      {(activeView === "bookmarks" || activeView === "voice") && (
         <BackButton onClick={() => handleNavigate("home")} />
       )}
 
