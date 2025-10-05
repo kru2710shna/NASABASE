@@ -10,6 +10,7 @@ openai
 python-dotenv
 openai-whisper
 faster-whisper
+fastapi
 react-globe.gl
 three
 xlsx 
