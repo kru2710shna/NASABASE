@@ -1,7 +1,13 @@
+// components/FiltersPanel.tsx
 import React from "react";
 import "../styles/FiltersPanel.css";
 
-const FiltersPanel: React.FC = () => {
+type Props = {
+  resultsLimit: number;                 // controlled value
+  onChangeResultsLimit: (n: number) => void; // setter from parent
+};
+
+const FiltersPanel: React.FC<Props> = ({ resultsLimit, onChangeResultsLimit }) => {
   return (
     <aside className="filters">
       <h3 className="filters-title">Filters</h3>
@@ -24,6 +30,18 @@ const FiltersPanel: React.FC = () => {
       <div className="filter-group">
         <p>🎯 Similarity Cutoff</p>
         <input type="number" min="0" max="1" step="0.1" defaultValue="0.7" />
+      </div>
+
+      <div className="filter-group">
+        <p>🧮 Number of results</p>
+        <select
+          value={resultsLimit}
+          onChange={(e) => onChangeResultsLimit(Number(e.target.value))}
+        >
+          <option value={5}>5</option>
+          <option value={10}>10</option>
+          <option value={15}>15</option>
+        </select>
       </div>
     </aside>
   );
