@@ -100,7 +100,7 @@ const App: React.FC = () => {
         <FiltersPanel />
       </main>
 
-      {(activeView === "bookmarks" || activeView === "voice") && (
+      {(activeView === "bookmarks") && (
         <BackButton onClick={() => handleNavigate("home")} />
       )}
 
