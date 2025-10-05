@@ -25,6 +25,7 @@ const ResultCard: React.FC<Props> = ({ result, onSummarize }) => {
           Summarize
         </button>
       </div>
+       <p className="bookmark-hint">Double-click to add to Bookmarks</p>
     </div>
   );
 };
