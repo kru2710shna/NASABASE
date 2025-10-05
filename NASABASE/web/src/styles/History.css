@@ -1,0 +1,73 @@
+/* ================================================================
+   HISTORY PANEL | NASA Data-Lab Theme
+================================================================ */
+
+.history-panel {
+  padding: 1rem;
+  color: #fff;
+}
+
+.history-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1A73E8;
+  margin-bottom: 0.8rem;
+}
+
+.history-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.history-item:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.history-query {
+  font-weight: 500;
+  color: #fff;
+}
+
+.history-time {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.history-clear {
+  margin-top: 1rem;
+  width: 100%;
+  background: linear-gradient(90deg, #1A73E8, #3a8eff);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.history-clear:hover {
+  transform: translateY(-1px);
+  background: linear-gradient(90deg, #4285f4, #5b9bff);
+}
+
+.history-empty {
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+}

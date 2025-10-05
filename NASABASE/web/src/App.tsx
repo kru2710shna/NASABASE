@@ -11,9 +11,16 @@ const App: React.FC = () => {
   const [summary, setSummary] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
-  // === Search API ===
+  // === Search API + Save to History ===
   const handleSearch = async (q: string) => {
     if (!q) return;
+
+    // Save query to local history
+    const item = { query: q, time: new Date().toLocaleTimeString() };
+    const prev = JSON.parse(localStorage.getItem("searchHistory") || "[]");
+    const updated = [item, ...prev.filter((p: any) => p.query !== q)].slice(0, 10);
+    localStorage.setItem("searchHistory", JSON.stringify(updated));
+
     try {
       const res = await fetch(
         `http://127.0.0.1:8000/api/search?query=${encodeURIComponent(q)}`
@@ -51,7 +58,7 @@ const App: React.FC = () => {
     <div className="App">
       <Header />
       <main className="layout">
-        <SideBar />
+        <SideBar onSelectHistory={handleSearch} />
         <SearchSection
           results={results}
           onSearch={handleSearch}
