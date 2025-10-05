@@ -1,21 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./styles/App.css";
 import Header from "./components/Header";
 import SideBar from "./components/SideBar";
 import SearchSection from "./components/SearchSection";
 import FiltersPanel from "./components/FiltersPanel";
 import SummaryModal from "./components/SummaryModal";
+import Bookmarks from "./components/Bookmarks";
+import BackButton from "./components/BackButton";
 
 const App: React.FC = () => {
   const [results, setResults] = useState<any[]>([]);
   const [summary, setSummary] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [bookmarks, setBookmarks] = useState<any[]>([]);
+  const [activeView, setActiveView] = useState<"home" | "bookmarks">("home");
 
-  // === Search API + Save to History ===
+  // Load saved bookmarks on mount
+  useEffect(() => {
+    const saved = JSON.parse(localStorage.getItem("bookmarks") || "[]");
+    setBookmarks(saved);
+  }, []);
+
+  // === Search API + History ===
   const handleSearch = async (q: string) => {
     if (!q) return;
 
-    // Save query to local history
     const item = { query: q, time: new Date().toLocaleTimeString() };
     const prev = JSON.parse(localStorage.getItem("searchHistory") || "[]");
     const updated = [item, ...prev.filter((p: any) => p.query !== q)].slice(0, 10);
@@ -54,18 +63,41 @@ const App: React.FC = () => {
     setLoading(false);
   };
 
+  // === Add to Bookmarks ===
+  const handleBookmark = (item: any) => {
+    const updated = [item, ...bookmarks.filter((b) => b.title !== item.title)];
+    setBookmarks(updated);
+    localStorage.setItem("bookmarks", JSON.stringify(updated));
+  };
+
+  // === Navigate ===
+  const handleNavigate = (view: "home" | "bookmarks") => {
+    setActiveView(view);
+  };
+
+  // === Render ===
   return (
     <div className="App">
       <Header />
       <main className="layout">
-        <SideBar onSelectHistory={handleSearch} />
-        <SearchSection
-          results={results}
-          onSearch={handleSearch}
-          onSummarize={handleSummarize}
-        />
+        <SideBar onSelectHistory={handleSearch} onNavigate={handleNavigate} />
+        {activeView === "home" ? (
+          <SearchSection
+            results={results}
+            onSearch={handleSearch}
+            onSummarize={handleSummarize}
+            onBookmark={handleBookmark}
+          />
+        ) : (
+          <Bookmarks bookmarks={bookmarks} />
+        )}
         <FiltersPanel />
       </main>
+
+      {activeView === "bookmarks" && (
+        <BackButton onClick={() => handleNavigate("home")} />
+      )}
+
       <SummaryModal
         summary={summary}
         loading={loading}

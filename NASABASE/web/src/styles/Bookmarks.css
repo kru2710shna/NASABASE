@@ -1,0 +1,35 @@
+.bookmarks-section {
+  width: 60%;
+  padding: 2rem;
+  text-align: center;
+  overflow-y: auto;
+}
+
+.bookmarks-title {
+  color: #1a73e8;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.bookmarks-container {
+  display: grid;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.bookmark-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  text-align: left;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.bookmark-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+}

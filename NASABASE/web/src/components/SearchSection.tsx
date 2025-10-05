@@ -8,9 +8,10 @@ interface Props {
   results: any[];
   onSearch: (q: string) => void;
   onSummarize: (paper: any) => void;
+  onBookmark: (paper: any) => void;
 }
 
-const SearchSection: React.FC<Props> = ({ results, onSearch, onSummarize }) => {
+const SearchSection: React.FC<Props> = ({ results, onSearch, onSummarize, onBookmark }) => {
   return (
     <section className="search-section">
       <div className="search-wrap">
@@ -19,7 +20,9 @@ const SearchSection: React.FC<Props> = ({ results, onSearch, onSummarize }) => {
 
       <div className="results-container">
         {results.map((r, i) => (
-          <ResultCard key={i} result={r} onSummarize={onSummarize} />
+          <div key={i} onDoubleClick={() => onBookmark(r)}>
+            <ResultCard result={r} onSummarize={onSummarize} />
+          </div>
         ))}
       </div>
 

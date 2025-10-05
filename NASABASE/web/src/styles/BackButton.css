@@ -1,0 +1,22 @@
+.back-btn {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, #1a73e8, #3a8eff);
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  z-index: 999;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.3);
+  transition: all 0.25s ease;
+}
+
+.back-btn:hover {
+  transform: translateX(-50%) scale(1.05);
+  background: linear-gradient(90deg, #4285f4, #5b9bff);
+}
