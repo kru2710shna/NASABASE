@@ -48,3 +48,26 @@
   from { opacity: 0; transform: translateY(-5px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+
+.export-list {
+  list-style: none;
+  margin-left: 1rem;
+  margin-top: 0.4rem;
+  border-left: 2px solid rgba(255,255,255,0.1);
+  padding-left: 0.5rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.export-list li {
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.85);
+  transition: all 0.2s ease;
+}
+
+.export-list li:hover {
+  color: #00ffff;
+  transform: translateX(4px);
+}

@@ -96,7 +96,7 @@ const App: React.FC = () => {
     <div className="App">
       <Header />
       <main className="layout">
-        <SideBar onSelectHistory={handleSearch} onNavigate={handleNavigate} />
+        <SideBar onSelectHistory={handleSearch} onNavigate={handleNavigate} results={results} />
 
         {activeView === "home" && (
           <SearchSection

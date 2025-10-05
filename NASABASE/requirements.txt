@@ -12,3 +12,5 @@ openai-whisper
 faster-whisper
 react-globe.gl
 three
+xlsx 
+jspdf
