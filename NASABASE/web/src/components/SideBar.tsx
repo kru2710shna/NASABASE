@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/Sidebar.css";
+import "../styles/SideBar.css";
 import History from "./History";
 import {
   exportToCSV,
