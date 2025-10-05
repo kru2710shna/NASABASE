@@ -1,22 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
 import Logo from "./components/Logo";
+import { searchNASA } from "./api/search";
 
 const App: React.FC = () => {
-  const handleSearch = (q: string) => {
-    // Hook to an API later
-    // eslint-disable-next-line no-console
-    console.log("search:", q);
+  const [results, setResults] = useState<any[]>([]);
+
+  const handleSearch = async (q: string) => {
+    const res = await searchNASA(q);
+    setResults(res);
   };
 
   return (
     <div className="App">
-      {/* Fixed header with top-left logo and top-center title */}
       <Header />
 
-      {/* Main: centered stack; search bar sits above the big NASA wordmark */}
       <main className="app-main" role="main">
         <div className="center-stack">
           <div className="search-wrap">
@@ -24,9 +24,22 @@ const App: React.FC = () => {
           </div>
           <Logo />
         </div>
+
+        {results.length > 0 && (
+          <div className="results-container">
+            {results.map((r, i) => (
+              <div key={i} className="result-card">
+                <h3>{r.title}</h3>
+                <p>{r.keywords}</p>
+                <a href={r.link} target="_blank" rel="noopener noreferrer">
+                  🔗 View Paper
+                </a>
+              </div>
+            ))}
+          </div>
+        )}
       </main>
 
-      {/* Decorative background behind everything */}
       <div className="starfield" aria-hidden />
     </div>
   );

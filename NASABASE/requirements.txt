@@ -1,0 +1,10 @@
+chromadb
+openai
+tqdm
+numpy
+python-dotenv
+fastapi
+uvicorn
+chromadb
+openai
+python-dotenv

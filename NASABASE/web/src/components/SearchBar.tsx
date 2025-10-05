@@ -8,13 +8,40 @@ type Props = {
 
 const SearchBar: React.FC<Props> = ({ onSearch, placeholder }) => {
   const [value, setValue] = useState("");
+  const [listening, setListening] = useState(false);
+  let recognition: any;
 
-  // 250ms debounce to avoid spamming on each keystroke
+  // 🔊 Voice setup (Web Speech API)
+  useEffect(() => {
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (SpeechRecognition) {
+      recognition = new SpeechRecognition();
+      recognition.lang = "en-US";
+      recognition.onresult = (e: any) => {
+        const transcript = e.results[0][0].transcript;
+        setValue(transcript);
+        onSearch(transcript);
+        setListening(false);
+      };
+      recognition.onend = () => setListening(false);
+    }
+  }, []);
+
+  const startListening = () => {
+    if (recognition) {
+      recognition.start();
+      setListening(true);
+    } else {
+      alert("Voice recognition not supported in this browser 😕");
+    }
+  };
+
+  // Debounce text search
   const debounced = useMemo(() => {
     let t: number | undefined;
     return (v: string) => {
       if (t) window.clearTimeout(t);
-      t = window.setTimeout(() => onSearch(v), 250);
+      t = window.setTimeout(() => onSearch(v), 350);
     };
   }, [onSearch]);
 
@@ -23,16 +50,8 @@ const SearchBar: React.FC<Props> = ({ onSearch, placeholder }) => {
   }, [value, debounced]);
 
   return (
-    <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-      <label
-        htmlFor="global-search"
-        className="sr-only"
-        style={{ position: "absolute", left: -9999 }}
-      >
-        Search
-      </label>
+    <div className="search-container">
       <input
-        id="global-search"
         type="search"
         value={value}
         onChange={(e) => setValue(e.target.value)}
@@ -40,6 +59,13 @@ const SearchBar: React.FC<Props> = ({ onSearch, placeholder }) => {
         className="search-input"
         autoComplete="off"
       />
+      <button
+        onClick={startListening}
+        className="mic-btn"
+        aria-label="Voice Search"
+      >
+        {listening ? "🎙️" : "🎤"}
+      </button>
     </div>
   );
 };
