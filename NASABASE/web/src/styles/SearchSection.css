@@ -1,8 +1,30 @@
 .search-section {
   width: 60%;
   padding: 2rem;
-  overflow-y: auto;
+  overflow-y: auto; /* Keep scrolling */
+
   text-align: center;
+  display: flex;
+  flex-direction: column;
+
+  /* Custom scrollbar (invisible) */
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #000000 transparent; /* Firefox */
+}
+
+/* Chrome, Safari, Edge */
+.search-section::-webkit-scrollbar {
+  width: 8px;
+}
+
+.search-section::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.search-section::-webkit-scrollbar-thumb {
+  background-color: #000; /* Black (invisible on dark theme) */
+  border-radius: 10px;
+  border: none;
 }
 
 .results-container {
@@ -10,6 +32,12 @@
   gap: 1.5rem;
   margin-top: 2rem;
   animation: fadeIn 0.6s ease;
+  flex: 1;
+}
+
+.pagination-wrap {
+  margin-top: 1.5rem;
+  align-self: center;
 }
 
 @keyframes fadeIn {
