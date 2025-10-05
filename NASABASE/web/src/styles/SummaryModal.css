@@ -1,75 +1,100 @@
-/* ================================================================
-   Summary Modal – NASA Data Lab Theme
-================================================================ */
+/* ============================================================
+   Summary Modal — Glassmorphism NASA UI
+============================================================ */
 
-.modal {
+.modal-overlay {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.85);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  animation: fadeIn 0.4s ease;
-}
-
-.modal-content {
-  background: rgba(17, 17, 17, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 18px;
-  padding: 2rem;
-  width: min(650px, 90%);
-  color: #ffffff;
-  box-shadow: 0 0 30px rgba(26, 115, 232, 0.3);
   backdrop-filter: blur(10px);
-  animation: popIn 0.4s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  animation: fadeIn 0.3s ease;
 }
 
-.modal-title {
-  font-size: 1.5rem;
+.modal-container {
+  background: rgba(25, 25, 30, 0.9);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.15);
+  width: min(800px, 90%);
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: slideUp 0.4s ease;
+}
+
+/* Header Section */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+  padding: 1.2rem 1.6rem;
+}
+
+.modal-header h2 {
+  color: #00ffff;
+  font-size: 1.3rem;
   font-weight: 700;
-  margin-bottom: 1rem;
-  text-align: center;
-  color: #1A73E8;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
 }
 
-.modal-loading {
-  color: rgba(255, 255, 255, 0.85);
-  text-align: center;
-  font-size: 1rem;
-}
-
-.summary-text {
-  white-space: pre-wrap;
-  color: rgba(255, 255, 255, 0.92);
-  margin-top: 1rem;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  font-family: "JetBrains Mono", "Inter", monospace;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 1rem;
-}
-
-/* Close Button */
 .close-btn {
-  margin-top: 1.5rem;
-  background: linear-gradient(90deg, #1a73e8, #3a8eff);
+  background: transparent;
   border: none;
-  border-radius: 8px;
   color: #fff;
-  padding: 0.6rem 1.4rem;
+  font-size: 1.2rem;
   cursor: pointer;
-  font-weight: 600;
   transition: all 0.25s ease;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+}
+.close-btn:hover {
+  color: #00ffff;
+  transform: rotate(90deg);
 }
 
-.close-btn:hover {
-  background: linear-gradient(90deg, #4285f4, #5b9bff);
-  transform: translateY(-1px);
+/* Body Section */
+.modal-body {
+  padding: 1.4rem 1.6rem;
+  overflow-y: auto;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  font-family: "JetBrains Mono", monospace;
+}
+
+/* Summary Text */
+.summary-content {
+  white-space: pre-wrap;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(0, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  font-size: 0.96rem;
+  max-height: 60vh;
+  overflow-y: auto;
+  box-shadow: inset 0 0 12px rgba(0, 255, 255, 0.1);
+}
+
+/* Loading Text */
+.loading-text {
+  color: #00ffff;
+  font-size: 1.1rem;
+  text-align: center;
+  animation: pulse 1.2s infinite ease-in-out;
+}
+
+/* Scrollbar Styling */
+.modal-body::-webkit-scrollbar {
+  width: 8px;
+}
+.modal-body::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 255, 0.3);
+  border-radius: 4px;
 }
 
 /* Animations */
@@ -78,7 +103,13 @@
   to { opacity: 1; }
 }
 
-@keyframes popIn {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
 }
