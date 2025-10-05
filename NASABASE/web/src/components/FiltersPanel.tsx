@@ -13,12 +13,12 @@ const FiltersPanel: React.FC<Props> = ({ resultsLimit, onChangeResultsLimit }) =
       <h3 className="filters-title">Filters</h3>
 
       <div className="filter-group">
-        <p>📅 Year Range</p>
+        <p> Year Range</p>
         <input type="range" min="2000" max="2025" />
       </div>
 
       <div className="filter-group">
-        <p>🔬 Category</p>
+        <p> Category</p>
         <select>
           <option>All</option>
           <option>Biology</option>
@@ -28,12 +28,12 @@ const FiltersPanel: React.FC<Props> = ({ resultsLimit, onChangeResultsLimit }) =
       </div>
 
       <div className="filter-group">
-        <p>🎯 Similarity Cutoff</p>
+        <p> Similarity Cutoff</p>
         <input type="number" min="0" max="1" step="0.1" defaultValue="0.7" />
       </div>
 
       <div className="filter-group">
-        <p>🧮 Number of results</p>
+        <p> Number of results</p>
         <select
           value={resultsLimit}
           onChange={(e) => onChangeResultsLimit(Number(e.target.value))}
