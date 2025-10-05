@@ -2,7 +2,7 @@
 # 🔍 Search Route – NASA Space Biology Knowledge Engine
 # ===============================================================
 from fastapi import APIRouter, Query
-from backend.services.knn_service import knn_search
+from services.knn_service import knn_search
 
 router = APIRouter()
 

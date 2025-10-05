@@ -6,7 +6,7 @@ from fastapi import APIRouter
 from fastapi import UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
 
-from backend.services.transcribe import transcribe
+from services.transcribe import transcribe
 # from fastapi.responses import JSONResponse
 
 # pip install faster-whisper fastapi uvicorn pydantic

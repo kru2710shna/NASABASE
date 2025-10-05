@@ -1,0 +1,46 @@
+.result-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+.result-card:hover {
+  background: rgba(255,255,255,0.1);
+  transform: translateY(-3px);
+}
+.result-header h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+}
+.keywords {
+  margin-top: 0.5rem;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.9rem;
+}
+.result-footer {
+  margin-top: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.source-link {
+  color: #00ffff;
+  text-decoration: none;
+  font-weight: 600;
+}
+.source-link:hover { text-decoration: underline; }
+.summarize-btn {
+  background: linear-gradient(90deg, #1a73e8, #3a8eff);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.summarize-btn:hover {
+  background: linear-gradient(90deg, #4285f4, #5b9bff);
+}

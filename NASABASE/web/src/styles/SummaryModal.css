@@ -1,0 +1,84 @@
+/* ================================================================
+   Summary Modal – NASA Data Lab Theme
+================================================================ */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.4s ease;
+}
+
+.modal-content {
+  background: rgba(17, 17, 17, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 18px;
+  padding: 2rem;
+  width: min(650px, 90%);
+  color: #ffffff;
+  box-shadow: 0 0 30px rgba(26, 115, 232, 0.3);
+  backdrop-filter: blur(10px);
+  animation: popIn 0.4s ease;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #1A73E8;
+  letter-spacing: 0.02em;
+}
+
+.modal-loading {
+  color: rgba(255, 255, 255, 0.85);
+  text-align: center;
+  font-size: 1rem;
+}
+
+.summary-text {
+  white-space: pre-wrap;
+  color: rgba(255, 255, 255, 0.92);
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  font-family: "JetBrains Mono", "Inter", monospace;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1rem;
+}
+
+/* Close Button */
+.close-btn {
+  margin-top: 1.5rem;
+  background: linear-gradient(90deg, #1a73e8, #3a8eff);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  padding: 0.6rem 1.4rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.close-btn:hover {
+  background: linear-gradient(90deg, #4285f4, #5b9bff);
+  transform: translateY(-1px);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}

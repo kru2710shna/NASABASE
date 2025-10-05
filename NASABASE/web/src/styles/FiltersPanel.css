@@ -1,0 +1,30 @@
+.filters {
+  width: 25%;
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(10px);
+  border-left: 1px solid rgba(255,255,255,0.08);
+  padding: 1.5rem 1rem;
+  color: #fff;
+}
+
+.filters-title {
+  font-size: 1.1rem;
+  color: #1A73E8;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.filter-group {
+  margin-bottom: 1.5rem;
+}
+
+.filter-group input,
+.filter-group select {
+  width: 100%;
+  margin-top: 0.4rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+}

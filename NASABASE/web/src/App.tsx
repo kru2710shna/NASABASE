@@ -1,21 +1,31 @@
 import React, { useState } from "react";
-import "./App.css";
+import "./styles/App.css";
 import Header from "./components/Header";
-import SearchBar from "./components/SearchBar";
-import Logo from "./components/Logo";
+import SideBar from "./components/SideBar";
+import SearchSection from "./components/SearchSection";
+import FiltersPanel from "./components/FiltersPanel";
+import SummaryModal from "./components/SummaryModal";
 
 const App: React.FC = () => {
   const [results, setResults] = useState<any[]>([]);
   const [summary, setSummary] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
+  // === Search API ===
   const handleSearch = async (q: string) => {
     if (!q) return;
-    const res = await fetch(`http://127.0.0.1:8000/api/search?query=${encodeURIComponent(q)}`);
-    const data = await res.json();
-    setResults(data.results || []);
+    try {
+      const res = await fetch(
+        `http://127.0.0.1:8000/api/search?query=${encodeURIComponent(q)}`
+      );
+      const data = await res.json();
+      setResults(data.results || []);
+    } catch {
+      console.error("Search request failed.");
+    }
   };
 
+  // === Summarize API ===
   const handleSummarize = async (paper: any) => {
     setLoading(true);
     setSummary(null);
@@ -31,7 +41,7 @@ const App: React.FC = () => {
       });
       const data = await res.json();
       setSummary(data.summary);
-    } catch (e) {
+    } catch {
       setSummary("⚠️ Could not generate summary. Try again later.");
     }
     setLoading(false);
@@ -40,51 +50,20 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <Header />
-      <main className="app-main">
-        <div className="center-stack">
-          <div className="search-wrap">
-            <SearchBar onSearch={handleSearch} placeholder="Search the cosmos..." />
-          </div>
-          <Logo />
-
-          {results.length > 0 && (
-            <div className="results-container">
-              {results.map((r, idx) => (
-                <div key={idx} className="result-card">
-                  <div className="result-header">
-                    <h3>{r.title}</h3>
-                    <button className="summarize-btn" onClick={() => handleSummarize(r)}>
-                      Summarize
-                    </button>
-                  </div>
-                  <p className="keywords"><strong>Keywords:</strong> {r.keywords}</p>
-                  <div className="result-meta">
-                    <a href={r.link} target="_blank" rel="noopener noreferrer" className="source-link">
-                      🔗 View Source
-                    </a>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
+      <main className="layout">
+        <SideBar />
+        <SearchSection
+          results={results}
+          onSearch={handleSearch}
+          onSummarize={handleSummarize}
+        />
+        <FiltersPanel />
       </main>
-
-      {summary && (
-        <div className="modal">
-          <div className="modal-content">
-            <h2>Research Overview</h2>
-            {loading ? (
-              <p>⏳ Generating summary...</p>
-            ) : (
-              <pre className="summary-text">{summary}</pre>
-            )}
-            <button onClick={() => setSummary(null)} className="close-btn">
-              Close
-            </button>
-          </div>
-        </div>
-      )}
+      <SummaryModal
+        summary={summary}
+        loading={loading}
+        onClose={() => setSummary(null)}
+      />
     </div>
   );
 };

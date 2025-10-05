@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import "../App.css";
+import "../styles/App.css";
 
 type Props = {
   onSearch: (q: string) => void;
