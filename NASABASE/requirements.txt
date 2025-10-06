@@ -1,0 +1,14 @@
+chromadb
+openai
+tqdm
+numpy
+python-dotenv
+fastapi
+uvicorn
+chromadb
+openai
+python-dotenv
+openai-whisper
+faster-whisper
+react-globe.gl
+three
