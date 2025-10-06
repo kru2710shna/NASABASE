@@ -154,7 +154,7 @@ NASABASE/
 
 ## 9. Hosting & Running the Project
 
-### Frontend (React)
+### 9.1 Frontend (React)
 1. Navigate to the **web/** directory:  
    ```bash
    cd web
@@ -175,7 +175,7 @@ NASABASE/
 
 ---
 
-### Backend (FastAPI)
+### 9.2 Backend (FastAPI)
 1. Install Python dependencies:  
    ```bash
    pip install -r requirements.txt
