@@ -3,8 +3,6 @@
 **_Intelligent Context-Based Research Discovery Platform_**
 
 ---
-Link to the project: https://nasabase-frontend.onrender.com
----
 
 ## 1. What We Did
 We built an **AI-powered NASA context-based search repository** and **intelligent discovery dashboard** that:
@@ -154,15 +152,43 @@ NASABASE/
 
 ---
 
-## 9. Future Additions
+## 9. Hosting & Running the Project
 
-| Planned Feature | Description |
-|------------------|-------------|
-| **Topic Clustering** | Auto-group papers via k-means or HDBSCAN |
-| **Research Graph** | Visual knowledge map of studies and authors |
-| **User Profiles** | Saved bookmarks, history, insights |
-| **API Gateway** | Public integration with research tools |
-| **Fine-Tuned Summarization** | Domain-specific training on NASA datasets |
+### Frontend (React)
+1. Navigate to the **web/** directory:  
+   ```bash
+   cd web
+   ```
+2. Install dependencies:  
+   ```bash
+   npm install
+   ```
+3. Add additional required dependencies:  
+   ```bash
+   npm install xlsx jspdf
+   ```
+4. Start the development server:  
+   ```bash
+   npm run dev
+   ```
+   The frontend should now be available on **http://localhost:5173** (or a similar port).
+
+---
+
+### Backend (FastAPI)
+1. Install Python dependencies:  
+   ```bash
+   pip install -r requirements.txt
+   ```
+2. Navigate to the **backend/** directory:  
+   ```bash
+   cd backend
+   ```
+3. Run the backend server:  
+   ```bash
+   uvicorn app:app --reload
+   ```
+   The backend should now be available on **http://127.0.0.1:8000**.
 
 ---
 
@@ -181,3 +207,5 @@ NASA’s bioscience data holds **transformative potential** — yet remains **un
 Our platform bridges this gap using **AI-driven embeddings**, **multilingual support**, and **voice-enabled interaction**, transforming data into **accessible, contextual insights**.
 
 > This prototype lays the groundwork for the future of intelligent research navigation — enabling scientists to find, understand, and act on knowledge faster than ever before.
+
+---
