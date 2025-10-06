@@ -1,6 +1,10 @@
-torch==2.0.1+cpu
---extra-index-url https://download.pytorch.org/whl/cpu
+# === CPU-only PyTorch (Render compatible) ===
+torch==2.0.1
+torchvision==0.15.2
+torchaudio==2.0.2
 faster-whisper==0.10.0
+
+# === Core project dependencies ===
 fastapi
 uvicorn
 chromadb
