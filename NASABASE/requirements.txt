@@ -15,3 +15,5 @@ react-globe.gl
 three
 xlsx 
 jspdf
+openai
+chromadb
