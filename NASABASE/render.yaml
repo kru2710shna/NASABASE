@@ -14,20 +14,22 @@ services:
     startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: PYTHON_VERSION
-        value: 3.11.9
-      # ⚠️ No need to hardcode PORT (Render injects this automatically)
+        value: 3.11.9  # ✅ ensures PyTorch compatibility
       - key: ALLOW_ORIGINS
-        value: "https://nasabase-web.onrender.com"  # ✅ your frontend Render URL once deployed
+        value: "https://nasabase-frontend.onrender.com"  # ✅ your live frontend URL
+      - key: OPENAI_API_KEY
+        sync: false  # ⚠️ manually add this in Render dashboard > Environment
 
   # --- Frontend Service ---
   - type: web
-    name: nasabase-web
+    name: nasabase-frontend
     env: node
     rootDir: NASABASE/web
     buildCommand: npm install && npm run build
-    staticPublishPath: build
+    startCommand: npx serve -s dist  # ✅ for Webpack builds (if output = dist)
+    staticPublishPath: dist
     envVars:
       - key: NODE_VERSION
         value: 18.17.0
       - key: REACT_APP_API_BASE_URL
-        value: "https://nasabase-backend.onrender.com/api"
+        value: "https://nasabase-1-sybx.onrender.com/api"  # ✅ your live backend URL
