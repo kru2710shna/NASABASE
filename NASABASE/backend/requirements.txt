@@ -4,7 +4,7 @@ torchaudio
 faster-whisper
 openai-whisper
 fastapi
-uvicorn[standard
+uvicorn
 chromadb
 openai
 tqdm
