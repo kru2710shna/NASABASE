@@ -1,11 +1,18 @@
-# === CPU-only PyTorch (Render compatible) ===
---extra-index-url https://download.pytorch.org/whl/cpu
-torch==2.1.0+cpu
-torchvision==0.16.0+cpu
-torchaudio==2.1.0+cpu
-faster-whisper==0.10.0
+# =============================================================
+# ✅ Render-safe CPU build for PyTorch + Whisper + FastAPI
+# =============================================================
 
-# === Core project dependencies ===
+# ---- CPU-only PyTorch (compatible versions) ----
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.2.2+cpu
+torchvision==0.17.2+cpu
+torchaudio==2.2.2+cpu
+
+# ---- Whisper inference ----
+faster-whisper==0.10.0
+openai-whisper
+
+# ---- Core backend ----
 fastapi
 uvicorn
 chromadb
@@ -13,4 +20,3 @@ openai
 tqdm
 numpy
 python-dotenv
-openai-whisper
