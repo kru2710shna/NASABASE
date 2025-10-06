@@ -1,7 +1,8 @@
 # =========================================================
 # 🌌 Render Deployment Spec for NASABASE
 # =========================================================
-# This defines both backend (FastAPI) and frontend (React)
+# Backend: FastAPI (Python 3.10)
+# Frontend: React (Node 18)
 # =========================================================
 
 services:
@@ -14,11 +15,11 @@ services:
     startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: PYTHON_VERSION
-        value: 3.10.14  # ✅ ensures PyTorch compatibility
+        value: 3.10.14        # ✅ PyTorch-compatible version
       - key: ALLOW_ORIGINS
-        value: "https://nasabase-frontend.onrender.com"  # ✅ your live frontend URL
+        value: "https://nasabase-frontend.onrender.com"  # ✅ Live frontend URL
       - key: OPENAI_API_KEY
-        sync: false  # ⚠️ manually add this in Render dashboard > Environment
+        sync: false           # ⚠️ Add manually in Render dashboard (Environment tab)
 
   # --- Frontend Service ---
   - type: web
@@ -26,10 +27,10 @@ services:
     env: node
     rootDir: NASABASE/web
     buildCommand: npm install && npm run build
-    startCommand: npx serve -s dist  # ✅ for Webpack builds (if output = dist)
+    startCommand: npx serve -s dist   # ✅ or `npx serve -s build` if your output is build/
     staticPublishPath: dist
     envVars:
       - key: NODE_VERSION
         value: 18.17.0
       - key: REACT_APP_API_BASE_URL
-        value: "https://nasabase-1-sybx.onrender.com/api"  # ✅ your live backend URL
+        value: "https://nasabase-backend.onrender.com/api"  # ✅ Live backend URL

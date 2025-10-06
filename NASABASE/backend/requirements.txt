@@ -1,16 +1,16 @@
-# === CPU-only PyTorch (Render-compatible) ===
+# === Lightweight CPU-only PyTorch (Render-compatible) ===
 --extra-index-url https://download.pytorch.org/whl/cpu
 torch==2.2.2
 torchvision==0.17.2
 torchaudio==2.2.2
 
-# === Whisper & related ===
+# === Whisper & Core ML utilities ===
 faster-whisper==0.10.0
 openai-whisper
 
-# === Core project dependencies ===
+# === FastAPI & Server Essentials ===
 fastapi
-uvicorn
+uvicorn[standard]
 chromadb
 openai
 tqdm
