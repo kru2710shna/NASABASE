@@ -4,7 +4,7 @@
 
 ---
 
-## 📘 1. What We Did
+## 1. What We Did
 We built an **AI-powered NASA context-based search repository** and **intelligent discovery dashboard** that:
 
 - Indexes and embeds **49K+ NASA bioscience research papers** and datasets.  
@@ -16,10 +16,11 @@ We built an **AI-powered NASA context-based search repository** and **intelligen
 - Displays an **interactive 3D globe dashboard** in React.  
 
 > This project demonstrates how context-based AI tools can accelerate discovery within NASA’s vast bioscience datasets by bridging the gap between disconnected knowledge sources.
+> Link to the project: https://nasabase-frontend.onrender.com
 
 ---
 
-## ⚠️ 2. The Problem
+## 2. The Problem
 Scientific data is often:
 - **Fragmented & Context-Disconnected** – scattered across multiple sources.  
 - **Lacking Intelligent Search** – keyword tools fail to capture semantic meaning.  
@@ -27,7 +28,7 @@ Scientific data is often:
 
 ---
 
-## 🧩 3. Our Approach
+## 3. Our Approach
 We designed an **end-to-end system** combining **LLM-powered embeddings**, **semantic search**, and **modular backend APIs**.
 
 **Key design principles:**
@@ -39,7 +40,7 @@ We designed an **end-to-end system** combining **LLM-powered embeddings**, **sem
 
 ---
 
-## 🧠 4. Key Features
+## 4. Key Features
 
 | Feature | Description |
 |----------|--------------|
@@ -52,7 +53,7 @@ We designed an **end-to-end system** combining **LLM-powered embeddings**, **sem
 
 ---
 
-## 📁 5. Repository Structure
+## 5. Repository Structure
 
 ```
 NASABASE/
@@ -100,7 +101,7 @@ NASABASE/
 
 ---
 
-## 🧬 6. Dataset & Embeddings
+## 6. Dataset & Embeddings
 
 | Category | Details |
 |-----------|----------|
@@ -118,7 +119,7 @@ NASABASE/
 
 ---
 
-## ⚙️ 7. Technical Stack
+## 7. Technical Stack
 
 | Layer | Technology |
 |--------|-------------|
@@ -131,7 +132,7 @@ NASABASE/
 
 ---
 
-## 🔍 8. Features in Detail
+## 8. Features in Detail
 
 ### 1. Semantic Search
 `query → embedding → vector similarity → top-K results`
@@ -152,7 +153,7 @@ NASABASE/
 
 ---
 
-## 🔭 9. Future Additions
+## 9. Future Additions
 
 | Planned Feature | Description |
 |------------------|-------------|
@@ -164,7 +165,7 @@ NASABASE/
 
 ---
 
-## 💡 10. Learnings
+## 10. Learnings
 
 - Embedding-based semantic search **vastly outperforms keyword search**.  
 - Persistent vector DBs like **ChromaDB** need efficient I/O optimization.  
@@ -174,7 +175,7 @@ NASABASE/
 
 ---
 
-## 🧭 11. Conclusion
+## 11. Conclusion
 NASA’s bioscience data holds **transformative potential** — yet remains **underutilized** due to fragmentation and limited discovery tools.  
 Our platform bridges this gap using **AI-driven embeddings**, **multilingual support**, and **voice-enabled interaction**, transforming data into **accessible, contextual insights**.
 
