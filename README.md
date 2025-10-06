@@ -180,8 +180,3 @@ NASA’s bioscience data holds **transformative potential** — yet remains **un
 Our platform bridges this gap using **AI-driven embeddings**, **multilingual support**, and **voice-enabled interaction**, transforming data into **accessible, contextual insights**.
 
 > This prototype lays the groundwork for the future of intelligent research navigation — enabling scientists to find, understand, and act on knowledge faster than ever before.
-
----
-
-## 🛰️ Appendix: Project File Structure Screenshot
-![File Structure](./abb2d08d-3d76-48dc-ba75-1192e307d9f0.png)
