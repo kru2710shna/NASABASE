@@ -1,16 +1,9 @@
-# ======================================================
-# ✅ Render-compatible PyTorch CPU-only wheels
-# ======================================================
 --extra-index-url https://download.pytorch.org/whl/cpu
-torch==2.2.0+cpu
-torchvision==0.17.0+cpu
-torchaudio==2.2.0+cpu
-
-# === Whisper & Core ML utilities ===
+torch
+torchvision
+torchaudio
 faster-whisper==0.10.0
 openai-whisper
-
-# === FastAPI & Server Essentials ===
 fastapi
 uvicorn[standard]
 chromadb
