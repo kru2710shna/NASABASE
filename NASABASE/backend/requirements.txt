@@ -1,18 +1,10 @@
-# =============================================================
-# ✅ Render-safe CPU build for PyTorch + Whisper + FastAPI
-# =============================================================
-
-# ---- CPU-only PyTorch (compatible versions) ----
 --extra-index-url https://download.pytorch.org/whl/cpu
 torch==2.2.2+cpu
 torchvision==0.17.2+cpu
 torchaudio==2.2.2+cpu
-
-# ---- Whisper inference ----
 faster-whisper==0.10.0
 openai-whisper
 
-# ---- Core backend ----
 fastapi
 uvicorn
 chromadb
