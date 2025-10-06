@@ -18,7 +18,7 @@ app = FastAPI(title="NASA Space Biology Knowledge Engine API")
 # === CORS Middleware ===
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://nasabase-web-ui.onrender.com"],
+    allow_origins=["https://nasabase-1-sybx.onrender.com"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -37,6 +37,6 @@ def root():
 
 # === Uvicorn Entrypoint ===
 if __name__ == "__main__":
-    # Render provides PORT env var; fallback to 5000 locally
+
     port = int(os.getenv("PORT", 5000))
     uvicorn.run("app:app", host="0.0.0.0", port=port)

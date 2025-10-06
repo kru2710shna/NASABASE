@@ -10,15 +10,14 @@ services:
     name: nasabase-backend
     env: python
     rootDir: NASABASE/backend
-    buildCommand: pip install -r requirements.txt
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
     startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.9
-      - key: PORT
-        value: 10000
+      # ⚠️ No need to hardcode PORT (Render injects this automatically)
       - key: ALLOW_ORIGINS
-        value: "https://nasabase-web.onrender.com"  # Update when frontend URL is live
+        value: "https://nasabase-web.onrender.com"  # ✅ your frontend Render URL once deployed
 
   # --- Frontend Service ---
   - type: web
@@ -26,7 +25,6 @@ services:
     env: node
     rootDir: NASABASE/web
     buildCommand: npm install && npm run build
-    startCommand: npx serve -s build
     staticPublishPath: build
     envVars:
       - key: NODE_VERSION
