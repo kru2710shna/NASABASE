@@ -61,7 +61,7 @@ const App: React.FC = () => {
     setLoading(true);
     setSummary(null);
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/summarize", {
+      const res = await fetch("https://nasabase.onrender.com/api/summarize", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
