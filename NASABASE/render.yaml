@@ -33,4 +33,4 @@ services:
       - key: NODE_VERSION
         value: 18.17.0
       - key: REACT_APP_API_BASE_URL
-        value: "https://nasabase-backend.onrender.com/api"  # ✅ Live backend URL
+        value: "http://127.0.0.1:8000/api"  # ✅ Live backend URL

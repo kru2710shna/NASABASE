@@ -44,7 +44,7 @@ const App: React.FC = () => {
     localStorage.setItem("searchHistory", JSON.stringify(updated));
 
     try {
-      const url = `https://nasabase-1-sybx.onrender.com/api/search?query=${encodeURIComponent(q)}&num_results=${resultsLimit}`;
+      const url = `http://127.0.0.1:8000/api/search?query=${encodeURIComponent(q)}&num_results=${resultsLimit}`;
       const res = await fetch(url);
       const data = await res.json();
 
@@ -61,7 +61,7 @@ const App: React.FC = () => {
     setLoading(true);
     setSummary(null);
     try {
-      const res = await fetch("https://nasabase-1-sybx.onrender.com/api/summarize", {
+      const res = await fetch("http://127.0.0.1:8000/api/summarize", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

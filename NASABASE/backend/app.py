@@ -18,7 +18,7 @@ app = FastAPI(title="NASA Space Biology Knowledge Engine API")
 # === CORS Middleware ===
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://nasabase-1-sybx.onrender.com"],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
