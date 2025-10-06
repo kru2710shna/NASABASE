@@ -3,6 +3,8 @@
 **_Intelligent Context-Based Research Discovery Platform_**
 
 ---
+Link to the project: https://nasabase-frontend.onrender.com
+---
 
 ## 1. What We Did
 We built an **AI-powered NASA context-based search repository** and **intelligent discovery dashboard** that:
@@ -16,7 +18,6 @@ We built an **AI-powered NASA context-based search repository** and **intelligen
 - Displays an **interactive 3D globe dashboard** in React.  
 
 > This project demonstrates how context-based AI tools can accelerate discovery within NASA’s vast bioscience datasets by bridging the gap between disconnected knowledge sources.
-> Link to the project: https://nasabase-frontend.onrender.com
 
 ---
 
