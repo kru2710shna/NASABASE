@@ -1,11 +1,10 @@
---extra-index-url https://download.pytorch.org/whl/cpu
 torch
 torchvision
 torchaudio
-faster-whisper==0.10.0
+faster-whisper
 openai-whisper
 fastapi
-uvicorn[standard]
+uvicorn[standard
 chromadb
 openai
 tqdm
