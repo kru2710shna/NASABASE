@@ -37,6 +37,5 @@ def root():
 
 # === Uvicorn Entrypoint ===
 if __name__ == "__main__":
-
     port = int(os.getenv("PORT", 5000))
-    uvicorn.run("app:app", host="0.0.0.0", port=port)
+    uvicorn.run(app, host="0.0.0.0", port=port)
