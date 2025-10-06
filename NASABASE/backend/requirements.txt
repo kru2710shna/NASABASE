@@ -1,8 +1,11 @@
-flask
-flask-cors
-openai
-chromadb
-python-dotenv
+torch==2.0.1+cpu
+--extra-index-url https://download.pytorch.org/whl/cpu
+faster-whisper==0.10.0
 fastapi
+uvicorn
+chromadb
+openai
+tqdm
+numpy
+python-dotenv
 openai-whisper
-faster-whisper
