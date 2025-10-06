@@ -44,7 +44,7 @@ const App: React.FC = () => {
     localStorage.setItem("searchHistory", JSON.stringify(updated));
 
     try {
-      const url = `http://127.0.0.1:8000/api/search?query=${encodeURIComponent(q)}&num_results=${resultsLimit}`;
+      const url = `https://nasabase.onrender.com/api/search?query=${encodeURIComponent(q)}&num_results=${resultsLimit}`;
       const res = await fetch(url);
       const data = await res.json();
 

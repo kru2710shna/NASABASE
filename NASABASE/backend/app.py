@@ -18,7 +18,7 @@ app = FastAPI(title="NASA Space Biology Knowledge Engine API")
 # === CORS Middleware ===
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # You can restrict to frontend domain later
+    allow_origins=["https://nasabase-web-ui.onrender.com"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
