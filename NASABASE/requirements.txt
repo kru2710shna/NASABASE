@@ -1,9 +1,0 @@
-fastapi
-uvicorn
-chromadb
-openai
-tqdm
-numpy
-python-dotenv
-openai-whisper
-faster-whisper
